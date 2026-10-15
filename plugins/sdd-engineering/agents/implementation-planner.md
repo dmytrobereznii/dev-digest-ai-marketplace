@@ -2,7 +2,11 @@
 name: implementation-planner
 description: >-
   Use when an approved feature spec needs an implementation plan: the how and
-  the order. Typical triggers: "plan SPEC-NN"; turn a spec such as
+  the order. Delegate every plan request to this agent, including the plan
+  step of a "spec and plan" request once spec-creator has written the spec,
+  instead of planning in the main session: the AC-to-task-to-test mapping
+  the build and verification steps rely on lives here. Typical triggers:
+  "plan SPEC-NN"; turn a spec such as
   `.context/specs/YYYY-MM-DD-slug.md` into tasks an implementer can build;
   re-plan after the spec changed. Reviews the spec for plan-readiness and
   returns its questions and recommendations, writes one `.plan.md` beside the
