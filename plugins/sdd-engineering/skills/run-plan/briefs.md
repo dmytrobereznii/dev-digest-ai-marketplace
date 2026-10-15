@@ -78,7 +78,9 @@ list as inline steps, plus the plan path and the slice.
 
 ```
 Diff scope: `git diff <BASE>`, working tree included. It is the build of
-SPEC-NN.
+SPEC-NN. Changed source paths: <list>.
+Architecture rules: <architecture doc path | the architecture section of
+CLAUDE.md / AGENTS.md | none stated — use the generic model and say so>.
 The structure follows the decisions in <plan path> §2. Where a finding
 contradicts a decision `Dn`, name the `Dn` in the finding.
 ```

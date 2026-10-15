@@ -196,11 +196,17 @@ matches, all in one message:
 
 | The run produced | Agent |
 |---|---|
-| A file added, renamed or deleted under a path the repo's architecture doc names as a boundary (a layer, ring, module root, or a shared-contracts package); or a plan decision that adds a port, an adapter, a module or a layer | `architecture-review:architecture-reviewer` |
+| Any change to source code: a file added, edited, renamed or deleted outside test files and documentation. Edits count as much as new files, and the repo needs no separate architecture doc for this to apply. Skip only when the diff touches tests and docs alone | `architecture-review:architecture-reviewer` — this is the plugin's independent review gate, run on every build that changes source |
 | A spec whose **Untrusted inputs** section names an input; or a change to request handlers or routes, settings or secret handling, adapters to external services, prompt assembly for a model, a shell or process call, or UI that renders user-, third-party- or model-supplied text | a `security-reviewer` agent, **if one is available in the session**; otherwise skip it and say so |
 
-Say in one line which ran and why, including when none did:
-`Reviewers: architecture-reviewer (new adapter under the infrastructure layer). Security: skipped, no security-reviewer in this session (AC-6 renders user-supplied titles).`
+Brief the architecture reviewer with the changed paths, the spec and plan
+paths, and where the repo describes its architecture (an architecture doc, or
+the architecture section of `CLAUDE.md` / `AGENTS.md`), or that it describes
+none.
+
+Say in one line which ran and why, including when none did, and carry the
+same line into the final report:
+`Reviewers: architecture-reviewer (source changed in config/, processing/ and main.go). Security: skipped, no security-reviewer in this session (AC-6 renders user-supplied titles).`
 
 - `BLOCKING` from the architecture reviewer, or `BLOCK` from a security
   reviewer: one rework round with the implementer that owns the path, then
@@ -251,6 +257,7 @@ open row is listed for the user.
    **Coverage:** <the verifier's coverage line>
    **Checks:** `<check command>` PASS · skipped: <lane (reason)> | none
    **Run:** <n> agents · <n> rework rounds · in order | in parallel
+   **Reviewers:** <the Step 6 line: who ran and why, who was skipped and why>
 
    | Slice | Tasks | Commit | Rework |
    |---|---|---|---|

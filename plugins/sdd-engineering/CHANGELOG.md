@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.1 — 2026-10-15
+
+### Fixed
+
+- `run-plan` now runs `architecture-review:architecture-reviewer` on every
+  build that changes source code, including edit-only changes and repos with
+  no separate architecture doc. In 1.0.0 it ran only when a file was added,
+  renamed or deleted under a boundary named in an architecture doc, so in an
+  ordinary repository the review gate never opened. Found by installing 1.0.0
+  in another project: an edit-only build across three packages finished with
+  plan-verifier alone.
+- `run-plan` always states who reviewed and who was skipped, and carries that
+  line into the final report.
+
 ## 1.0.0 — 2026-10-15
 
 Initial release, extracted from a working project harness and generalized to

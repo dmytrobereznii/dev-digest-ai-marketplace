@@ -113,7 +113,7 @@ automatically. Then `/reload-plugins` or start a new session.
 
 | Plugin | Used for |
 |---|---|
-| `architecture-review` (`^1.0.0`) | `architecture-review:architecture-reviewer`, the gate `run-plan` sends a diff to when it touches a boundary the repo's architecture doc names |
+| `architecture-review` (`^1.0.0`) | `architecture-review:architecture-reviewer`, the independent review gate `run-plan` sends every source-changing diff to |
 | `research-tools` (`^1.0.0`) | `research-tools:researcher`, which `run-plan` asks when a blocked agent needs a fact about a library or the running system |
 | `engineering-paved-path` (`^1.0.0`) | Architecture and stack skills the agents load with the Skill tool when the change touches that stack |
 
