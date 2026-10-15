@@ -1,7 +1,7 @@
 {
   "name": "engineering-paved-path",
   "version": "1.0.0",
-  "description": "Shared engineering skills: architecture, TypeScript, React, Node, data, testing and security practices.",
+  "description": "Shared engineering skills: backend and frontend architecture, TypeScript, Zod, Fastify, Drizzle and PostgreSQL.",
   "author": { "name": "dmytrobereznii" },
-  "keywords": ["skills", "architecture", "typescript", "react", "testing", "security"]
+  "keywords": ["skills", "architecture", "typescript", "zod", "fastify", "drizzle", "postgresql"]
 }
