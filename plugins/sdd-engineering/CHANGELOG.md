@@ -7,9 +7,13 @@ run in any repository.
 
 ### Agents
 
-- `spec-creator` — feature specs with EARS acceptance criteria `AC-n`.
+- `spec-creator` — feature specs with EARS acceptance criteria `AC-n`,
+  sized to the change (a single flag or command usually needs 3–6 criteria;
+  see `docs/COST-BASELINE.md`). Its description tells the main session to
+  delegate spec requests instead of writing specs itself.
 - `implementation-planner` — a `.plan.md` beside the spec; every task cites an
-  `AC-n` and a test.
+  `AC-n` and a test. Its description tells the main session to delegate plan
+  requests, including the plan half of a "spec and plan" request.
 - `implementer` — builds a plan or a slice and proves it with the repo's
   discovered checks.
 - `test-writer` — writes and runs the tests a slice names; reports source

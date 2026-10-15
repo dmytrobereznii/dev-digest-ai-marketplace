@@ -98,10 +98,17 @@ function runOnce(n) {
         planWritten: Boolean(plan),
         planCitesCriteria: /\bAC-\d+\b/.test(planText),
         sourceUntouched: touchedSrc === '',
+        // The two behaviours a slimmer spec could silently drop; missing one is a
+        // critical false negative, not just a failed check.
+        specCoversEmptyList: /\[\]/.test(specText),
+        specKeepsPlainOutput: /unchanged|as (it does )?today|same as (before|today)|existing (output|behaviou?r|format)|human-readable|plain (text|output)/i.test(specText),
+        planCoversEveryCriterion: [...new Set(specText.match(/\bAC-\d+\b/g) ?? [])].every((ac) => new RegExp(`\\b${ac}\\b`).test(planText)),
       };
       const critical = [];
       if (result.is_error || result.subtype !== 'success') critical.push(`session ended: ${result.subtype ?? 'no result'}`);
       if (!checks.sourceUntouched) critical.push('edited source or tests');
+      if (!checks.specCoversEmptyList) critical.push('spec drops the empty-list behaviour');
+      if (!checks.specKeepsPlainOutput) critical.push('spec drops the unchanged plain output');
 
       const out = {
         run: n,
@@ -109,14 +116,21 @@ function runOnce(n) {
         checks,
         critical,
         costUsd: result.total_cost_usd ?? null,
-        durationMs: result.duration_ms ?? Date.now() - started,
+        // Wall clock: the session's own duration_ms was observed reporting a single turn.
+        durationMs: Date.now() - started,
         apiCalls: messageIds.size,
         numTurns: result.num_turns ?? null,
         toolCalls: Object.values(tools).reduce((a, b) => a + b, 0),
         tools,
         agents,
         tokens,
-        models: Object.keys(result.modelUsage ?? {}),
+        // Per model, so the cost can be split between the main session and the subagents.
+        modelUsage: result.modelUsage ?? {},
+        artifacts: {
+          specBytes: specText.length,
+          planBytes: planText.length,
+          acceptanceCriteria: new Set(specText.match(/\bAC-\d+\b/g) ?? []).size,
+        },
         workspace: keep ? ws : null,
       };
       if (!keep) rmSync(ws, { recursive: true, force: true });
