@@ -3,8 +3,9 @@ name: spec-creator
 description: >-
   Use when a feature or behavioural change needs its requirements written down
   before anyone plans or builds it: the what and the why. Delegate every spec
-  request to this agent, including "spec and plan" requests and small
-  features, instead of writing the spec in the main session: the spec
+  request to this agent, including "spec and plan" requests, small features,
+  and finishing, completing or revising an existing draft spec, instead of
+  writing or editing the spec in the main session: the spec
   format, the AC-n numbering and the readiness checks the rest of the SDD
   workflow relies on live here. Typical triggers:
   "write a spec for X"; turn a text description, a design export, mockups or
@@ -124,9 +125,19 @@ given or can read in this repo.
    questions. Never fill a gap with an assumption. A fact you read in the code
    or the materials is not an assumption: cite its `path:line` or design
    frame.
-7. **Self-check, then stop.**
-   - Each goal has at least one AC, and each AC is one EARS sentence with an
-     observable response.
+7. **Gate: every requirement has an acceptance criterion.** A requirement
+   is each goal, each `US-n`, each `NFR-n`, and each must the request or the
+   materials state. List them all in the Requirement coverage table, each with
+   the `AC-n` that proves it. A row with no AC is not allowed to stand:
+   - write the missing criterion, if the behaviour is clear enough to state
+     as one observable EARS sentence;
+   - otherwise move the requirement to Non-goals with the reason, or turn it
+     into a blocking question.
+   You may not return `WRITTEN`, and the spec may not leave `draft`, while
+   any row lacks an AC. If a blocking question is what remains, return
+   `NEEDS_INPUT` and name the uncovered requirements.
+8. **Self-check, then stop.**
+   - Each AC is one EARS sentence with an observable response.
    - Each edge case points to an AC, a non-goal or a marker.
    - Markers and Open questions rows match one to one.
    - Nothing says how: no file lists, libraries, code structure or task order.
@@ -180,6 +191,7 @@ Supersedes: <link, when this spec replaces an earlier decision; otherwise —>
 ## Goals / Non-goals       <!-- outcomes; then what this change will not do -->
 ## User stories            <!-- US-n: As a…, I want…, so that…; only if they clarify behaviour -->
 ## Acceptance criteria (EARS)   <!-- AC-n, each tagged with its US-n -->
+## Requirement coverage    <!-- table: requirement (goal, US-n, NFR-n or a must from the request) | AC-n; no empty AC cell -->
 ## Edge cases              <!-- table: case | expected behaviour | AC-n, non-goal or marker -->
 ## Non-functional requirements  <!-- NFR-n, only the relevant ones, each measurable -->
 ## Inputs and provenance   <!-- table: input | provenance tag | note -->

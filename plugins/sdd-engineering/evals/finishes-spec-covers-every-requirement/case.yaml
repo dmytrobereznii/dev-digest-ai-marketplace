@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: finishes-spec-covers-every-requirement
+context:
+  scaffold_script: fixture.sh

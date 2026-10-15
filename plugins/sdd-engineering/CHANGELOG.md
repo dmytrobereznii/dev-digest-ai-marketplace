@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.1.0 — 2026-10-15
+
+### Added
+
+- `spec-creator` will not finish a spec until every required requirement has
+  an acceptance criterion. Every goal, `US-n`, `NFR-n`, and every must stated in
+  the request or the materials gets a row in a new **Requirement coverage**
+  table with the `AC-n` that proves it. A row without an AC must get a
+  criterion, move to Non-goals with a reason, or become a blocking question.
+  Until then the spec stays `draft` and the agent cannot return `WRITTEN`.
+- Eval case `finishes-spec-covers-every-requirement`: a draft spec whose goal
+  has no criterion must come out covered, with the coverage table. 1.0.1
+  scores 0.64 on it (no table); 1.1.0 scores 1.00.
+
+### Changed
+
+- `spec-creator`'s description now also routes "finish", "complete" or
+  "revise this draft spec" requests to it. In one run the main session
+  finished a draft spec itself and bypassed the new gate.
+
+Backward compatible: existing specs stay valid, and they gain the table the
+next time spec-creator edits them.
+
 ## 1.0.1 — 2026-10-15
 
 ### Fixed

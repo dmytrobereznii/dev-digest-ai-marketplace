@@ -14,7 +14,7 @@ commits only when you approve it at its one gate.
 
 | Agent | Does |
 |---|---|
-| `sdd-engineering:spec-creator` | Writes one feature spec — the what and the why: blocking questions first, EARS acceptance criteria `AC-n`, `[NEEDS CLARIFICATION]` instead of assumptions |
+| `sdd-engineering:spec-creator` | Writes one feature spec — the what and the why: blocking questions first, EARS acceptance criteria `AC-n`, `[NEEDS CLARIFICATION]` instead of assumptions. It does not finish a spec while any requirement lacks an AC (a Requirement coverage table proves it) |
 | `sdd-engineering:implementation-planner` | Reviews an approved spec, then writes its `.plan.md` — the how and the order — in which every task cites an `AC-n` and a test |
 | `sdd-engineering:implementer` | Builds a plan or one slice of it and proves it with the repo's own checks; reports deviations instead of hiding them |
 | `sdd-engineering:test-writer` | Writes and runs the tests a slice names; writes test files only and reports source bugs rather than fixing them |
