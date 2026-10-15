@@ -1,0 +1,16 @@
+# Every change needs a review from the owner of the area it touches.
+# Enforced by the repository ruleset on main ("Require review from Code Owners").
+
+*                                 @dmytrobereznii
+
+/.claude-plugin/                  @dmytrobereznii
+/.github/                         @dmytrobereznii
+/docs/SECURITY.md                 @dmytrobereznii
+
+/plugins/engineering-paved-path/  @dmytrobereznii
+/plugins/research-tools/          @dmytrobereznii
+/plugins/architecture-review/     @dmytrobereznii
+/plugins/sdd-engineering/         @dmytrobereznii
+
+/site/                            @dmytrobereznii
+/scripts/                         @dmytrobereznii

@@ -1,0 +1,12 @@
+{
+  "name": "sdd-engineering",
+  "version": "1.0.0",
+  "description": "Spec-driven development: spec, plan, build slice by slice, verify every acceptance criterion, and retro the run.",
+  "author": { "name": "dmytrobereznii" },
+  "keywords": ["sdd", "spec", "plan", "workflow", "agents"],
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" },
+    { "name": "research-tools", "version": "^1.0.0" },
+    { "name": "architecture-review", "version": "^1.0.0" }
+  ]
+}

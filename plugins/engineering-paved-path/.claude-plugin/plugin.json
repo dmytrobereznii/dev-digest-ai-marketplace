@@ -1,0 +1,7 @@
+{
+  "name": "engineering-paved-path",
+  "version": "1.0.0",
+  "description": "Shared engineering skills: architecture, TypeScript, React, Node, data, testing and security practices.",
+  "author": { "name": "dmytrobereznii" },
+  "keywords": ["skills", "architecture", "typescript", "react", "testing", "security"]
+}

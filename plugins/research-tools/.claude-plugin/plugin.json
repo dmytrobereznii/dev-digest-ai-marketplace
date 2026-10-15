@@ -1,0 +1,7 @@
+{
+  "name": "research-tools",
+  "version": "1.0.0",
+  "description": "A read-only researcher agent that returns cited, dated findings and separates facts from inference.",
+  "author": { "name": "dmytrobereznii" },
+  "keywords": ["research", "agent", "read-only"]
+}

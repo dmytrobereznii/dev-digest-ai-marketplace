@@ -1,0 +1,52 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Pinned so a CLI release can't change what "valid" means under us.
+  # Bump deliberately, together with COMPATIBILITY.md if it matters.
+  CLAUDE_CODE_VERSION: 2.1.299
+
+jobs:
+  manifests:
+    name: Plugin manifests (claude plugin validate --strict)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+      - name: Validate the marketplace
+        run: claude plugin validate . --strict
+      - name: Validate each plugin
+        run: |
+          status=0
+          for p in plugins/*/; do
+            echo "::group::$p"
+            claude plugin validate "$p" --strict || status=1
+            echo "::endgroup::"
+          done
+          exit $status
+
+  hygiene:
+    name: Hygiene (secrets, absolute paths, source-project names, English only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-hygiene.mjs

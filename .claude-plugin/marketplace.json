@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dev-digest-ai-marketplace",
+  "description": "Spec-driven development workflow and the engineering practices, research and architecture-review agents it builds on.",
+  "owner": { "name": "dmytrobereznii" },
+  "plugins": [
+    {
+      "name": "engineering-paved-path",
+      "source": "./plugins/engineering-paved-path",
+      "description": "Shared engineering skills: architecture, TypeScript, React, Node, data, testing and security practices."
+    },
+    {
+      "name": "research-tools",
+      "source": "./plugins/research-tools",
+      "description": "A read-only researcher agent that returns cited, dated findings and separates facts from inference."
+    },
+    {
+      "name": "architecture-review",
+      "source": "./plugins/architecture-review",
+      "description": "An architecture reviewer that checks layer boundaries and coupling against the repository's own architecture docs."
+    },
+    {
+      "name": "sdd-engineering",
+      "source": "./plugins/sdd-engineering",
+      "description": "Spec-driven development: spec, plan, build slice by slice, verify every acceptance criterion, and retro the run."
+    }
+  ]
+}

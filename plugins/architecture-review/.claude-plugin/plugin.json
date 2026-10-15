@@ -1,0 +1,10 @@
+{
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "An architecture reviewer that checks layer boundaries and coupling against the repository's own architecture docs.",
+  "author": { "name": "dmytrobereznii" },
+  "keywords": ["architecture", "review", "agent"],
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" }
+  ]
+}
