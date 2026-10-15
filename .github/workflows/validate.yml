@@ -30,6 +30,8 @@ jobs:
       - run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
       - name: Validate the marketplace
         run: claude plugin validate . --strict
+      - name: Validate the stable channel
+        run: claude plugin validate channels/stable/marketplace.json --strict
       - name: Validate each plugin
         run: |
           status=0
