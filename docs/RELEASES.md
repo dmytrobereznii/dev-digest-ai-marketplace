@@ -108,22 +108,40 @@ There is no `claude plugin rollback` command. Rolling back means moving to the
 stable channel:
 
 ```bash
-# 1. Leave the latest channel
-claude plugin uninstall sdd-engineering@dev-digest-ai-marketplace --scope project
+# 1. Leave the latest channel. --prune also removes the three dependencies
+#    the install pulled in; without it they stay installed.
+claude plugin uninstall sdd-engineering@dev-digest-ai-marketplace --scope project --prune -y
 claude plugin marketplace remove dev-digest-ai-marketplace
 
-# 2. Install from stable
+# 2. Install from stable (dependencies come along, pinned to their tags)
 claude plugin marketplace add https://raw.githubusercontent.com/dmytrobereznii/dev-digest-ai-marketplace/main/channels/stable/marketplace.json --scope project
 claude plugin install sdd-engineering@dev-digest-ai-marketplace-stable --scope project
 
-# 3. Load it and check the version
-#    /reload-plugins (or a new session), then:
-claude plugin list --json
+# 3. Check: four plugins from -stable, sdd-engineering at the stable version, no errors
+claude plugin list --json | jq -r '.[] | select(.id|test("dev-digest")) | "\(.id) \(.version) errors=\((.errors // [])|length)"'
 ```
 
-4. Run the smoke eval: `claude plugin eval sdd-engineering@dev-digest-ai-marketplace-stable --case smoke`.
+4. **Smoke check, in a new session** (or after `/reload-plugins`) in the
+   project. Ask any read-only question, then confirm the session's init lists
+   `sdd-engineering` at the stable version, loaded from
+   `~/.claude/plugins/cache/dev-digest-ai-marketplace-stable/`, with all seven
+   agents. Headless:
 
-Return to latest the same way in reverse, once the fix is released.
+   ```bash
+   claude -p "What does <a function in this repo> do? One sentence." --output-format stream-json --verbose \
+     | jq -c 'select(.subtype=="init") | [.plugins[] | select(.path|test("dev-digest")) | .path]'
+   ```
+
+   The behaviour evals do **not** run against an installed plugin: in the
+   install cache each plugin sits in its own directory, so the cases' relative
+   paths to their dependency plugins do not resolve. To re-run them for a
+   released version, check out its tag and run them there:
+   `git worktree add /tmp/rel <plugin>--v<version>`, then from that checkout
+   `claude plugin eval . --eval-dir plugins/sdd-engineering/evals --tag smoke --scaffold --allow-tools Write Edit`.
+
+Return to latest the same way in reverse (`uninstall … -stable --prune -y`,
+`marketplace remove dev-digest-ai-marketplace-stable`, then add and install
+from latest).
 
 **Plugin data.** `uninstall` removes `~/.claude/plugins/data/<id>/` unless you
 pass `--keep-data`. These plugins keep their working files (specs, plans,
@@ -131,5 +149,13 @@ insights, retro ledger) in the user's repository, not in plugin data, so a
 rollback loses nothing. A plugin that starts writing outside the repository
 must document how to restore that state here.
 
-> The command sequence above is rehearsed in the lab's step 11 and corrected
-> here if any step behaves differently.
+**Rehearsed 2026-10-15** (Claude Code 2.1.299) in a project on
+`sdd-engineering` 1.1.0:
+- **Latest to stable:** the project went to 1.0.0 from the stable channel, and the dependencies came along at their `--v1.0.0` tags.
+- **Smoke check:** the session loaded 1.0.0 from `…-stable/` with seven agents.
+- **Back to latest:** it returned to 1.1.0.
+- **Clean:** no errors and nothing left over.
+- **Plugin data:** none existed, so `--keep-data` was not needed.
+
+Without `--prune` on step 1, the three dependencies of the latest channel
+stayed installed until their marketplace was removed.
