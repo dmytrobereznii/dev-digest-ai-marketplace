@@ -159,6 +159,11 @@ clauses in this order: While, When, shall.
   "soft-delete" is a mechanism and belongs in the plan.
 - Leave out words nobody can test: appropriate, efficient, fast, user-friendly,
   robust, where possible, as needed, etc.
+- **Size the set to the change.** One criterion per behaviour a user or a
+  caller can tell apart, not one per sentence of description. A single flag,
+  field or command usually needs 3–6; more than 8 for one command means the
+  criteria restate each other or carry the plan. A case one criterion already
+  decides goes in the Edge cases table, not into a criterion of its own.
 - IDs are `AC-1`, `AC-2`… and stay stable. Append new ones. A dropped
   criterion keeps its number as `AC-3 — removed`. Every failure path found in
   step 2 gets an Unwanted behaviour criterion or a non-goal.

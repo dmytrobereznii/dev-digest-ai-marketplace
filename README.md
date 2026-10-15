@@ -48,5 +48,5 @@ channel and rollback: [docs/RELEASES.md](docs/RELEASES.md).
 - [CONTRIBUTING.md](CONTRIBUTING.md) — plugin layout, manifest fields, dependency rules, checks, PR checklist
 - [docs/SECURITY.md](docs/SECURITY.md) — what a plugin must never contain, and what to do after a bad release
 - [docs/RELEASES.md](docs/RELEASES.md) — SemVer, tags, channels, rollback
-- `docs/COST-BASELINE.md` — what one SDD run costs, and the optimisation we measured *(added with the first release)*
-- `docs/SITE-SPEC.md` — the GitHub Pages catalog *(added with the site)*
+- [docs/COST-BASELINE.md](docs/COST-BASELINE.md) — what one SDD run costs, and the optimisation we measured
+- [docs/SITE-SPEC.md](docs/SITE-SPEC.md) — the GitHub Pages catalog
