@@ -2,7 +2,11 @@
 name: spec-creator
 description: >-
   Use when a feature or behavioural change needs its requirements written down
-  before anyone plans or builds it: the what and the why. Typical triggers:
+  before anyone plans or builds it: the what and the why. Delegate every spec
+  request to this agent, including "spec and plan" requests and small
+  features, instead of writing the spec in the main session: the spec
+  format, the AC-n numbering and the readiness checks the rest of the SDD
+  workflow relies on live here. Typical triggers:
   "write a spec for X"; turn a text description, a design export, mockups or
   existing code into a feature spec; analyse a design for missing states, edge
   cases and cross-module effects; revise a spec after answers or a scope
