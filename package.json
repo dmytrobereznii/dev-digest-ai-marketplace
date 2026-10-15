@@ -1,0 +1,15 @@
+{
+  "name": "dev-digest-ai-marketplace",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:index": "node scripts/build-index.mjs",
+    "check:hygiene": "node scripts/check-hygiene.mjs"
+  },
+  "devDependencies": {
+    "yaml": "^2.6.0"
+  }
+}

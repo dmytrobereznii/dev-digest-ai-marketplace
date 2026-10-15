@@ -11,3 +11,6 @@ site/dist/
 # Local eval and cost runs
 .eval-runs/
 *.log
+
+# claude plugin eval output
+plugins/*/evals/results/

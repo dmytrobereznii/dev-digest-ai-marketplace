@@ -64,12 +64,22 @@ generalizing that file.
   in `claude plugin eval` format.
 - `.context/**`, `CLAUDE.md`, `INSIGHTS.md` contents — project knowledge.
 
-## Open for the human decision (lab: boundaries are a person's call)
+## Decisions (2026-10-15, delegated by the owner)
 
-1. Add `test-writer` to `sdd-engineering`? Proposed yes.
-2. `security-reviewer` and `brainstormer`: leave out of 1.0.0 and make
-   `run-plan` treat them as "use if installed"? Proposed yes.
-3. Third-party stack skills: their origin and licence are not recorded in
-   DevDigest. Publishing them in a public repo redistributes someone else's
-   content. Either find the upstream repos and keep their licence and
-   attribution, or ship only the skills we wrote.
+1. `test-writer` ships in `sdd-engineering`.
+2. `security-reviewer`, `brainstormer` and `doc-writer` stay out of 1.0.0;
+   `run-plan` uses them only if they are available.
+3. Third-party skills, traced by content comparison and the upstream
+   `LICENSE`:
+
+   | Skill | Source | Licence | Ships |
+   |---|---|---|---|
+   | `fastify-best-practices` | mcollina/skills | MIT | yes |
+   | `drizzle-orm-patterns` | giuseppe-trisciuoglio/developer-kit | MIT | yes |
+   | `zod` | pproenca/dot-skills | MIT | yes |
+   | `postgresql-table-design` | wshobson/agents (older version) | MIT | yes |
+   | `typescript-expert` | sickn33/agentic-awesome-skills (older version) | MIT | yes |
+   | `security`, `react-best-practices`, `react-testing-library`, `mermaid-diagram` | burnjohn/quick-blog | none stated | **no** — until the owner grants a licence |
+   | `next-best-practices` | pedronauck/skills, originally vercel-labs/next-skills | none found | **no** |
+
+   Notices: `plugins/engineering-paved-path/THIRD_PARTY_NOTICES.md`.

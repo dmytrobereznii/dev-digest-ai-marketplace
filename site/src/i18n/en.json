@@ -1,0 +1,167 @@
+{
+  "site": {
+    "name": "dev-digest-ai-marketplace"
+  },
+  "title": {
+    "page": "{page} · dev-digest-ai-marketplace"
+  },
+  "nav": {
+    "label": "Main",
+    "plugins": "Plugins",
+    "search": "Search",
+    "whatsNew": "What's new",
+    "gettingStarted": "Getting started",
+    "skip": "Skip to content"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toLight": "Switch to the light theme",
+    "toDark": "Switch to the dark theme"
+  },
+  "footer": {
+    "builtAtCommit": "Built from {commit} on {date}",
+    "built": "Built on {date}",
+    "source": "Source on GitHub"
+  },
+  "status": {
+    "loading": "Loading the catalog…",
+    "errorTitle": "The catalog could not be loaded",
+    "errorText": "index.json is missing or unreadable. Run `npm run build:index` at the repository root, then reload.",
+    "loadingBody": "Loading…",
+    "bodyError": "This document could not be loaded."
+  },
+  "count": {
+    "plugins": { "one": "{n} plugin", "other": "{n} plugins" },
+    "agents": { "one": "{n} agent", "other": "{n} agents" },
+    "skills": { "one": "{n} skill", "other": "{n} skills" },
+    "results": { "one": "{n} result", "other": "{n} results" }
+  },
+  "kind": {
+    "plugin": "Plugin",
+    "agent": "Agent",
+    "skill": "Skill",
+    "pluginPlural": "Plugins",
+    "agentPlural": "Agents",
+    "skillPlural": "Skills"
+  },
+  "copy": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "failed": "Copy failed",
+    "aria": "Copy: {text}"
+  },
+  "commands": {
+    "pluginPlaceholder": "<plugin>",
+    "install": "/plugin install {plugin}@{marketplace}",
+    "addMarketplaceSlash": "/plugin marketplace add {repo}",
+    "addMarketplaceCli": "claude plugin marketplace add {repo}",
+    "reload": "/reload-plugins",
+    "update": "claude plugin marketplace update {marketplace}\nclaude plugin update {plugin}@{marketplace} --scope project",
+    "list": "claude plugin list --json",
+    "rollback": "# 1. Leave the latest channel\nclaude plugin uninstall {plugin}@{marketplace} --scope project\nclaude plugin marketplace remove {marketplace}\n\n# 2. Install from stable\nclaude plugin marketplace add https://raw.githubusercontent.com/{repo}/main/channels/stable/marketplace.json --scope project\nclaude plugin install {plugin}@{marketplace}-stable --scope project\n\n# 3. Load it and check the version\n#    /reload-plugins (or a new session), then:\nclaude plugin list --json"
+  },
+  "home": {
+    "countSeparator": " · ",
+    "pluginsTitle": "Plugins",
+    "noPlugins": "This marketplace lists no plugins yet.",
+    "whatsNewTitle": "What's new",
+    "allReleases": "All releases",
+    "quickStartTitle": "Quick start",
+    "fullGuide": "Full guide",
+    "quickStartAdd": "Add the marketplace in Claude Code:",
+    "quickStartInstall": "Install a plugin by name:"
+  },
+  "search": {
+    "label": "Search plugins, agents and skills",
+    "placeholder": "Search by what you need, e.g. \"a skill for writing specs\"",
+    "submit": "Search",
+    "titleAll": "All plugins, agents and skills",
+    "titleFor": "Results for \"{q}\"",
+    "filterKind": "Filter by kind",
+    "filterPlugin": "Filter by plugin",
+    "allKinds": "All",
+    "allPlugins": "All plugins",
+    "indexingBodies": " (still indexing documentation; results may grow)",
+    "noResults": "Nothing matches \"{q}\".",
+    "nothingToShow": "Nothing to show with these filters.",
+    "browseAll": "Browse all plugins"
+  },
+  "plugin": {
+    "versionShort": "v{version}",
+    "dependsOnCount": "depends on {n}",
+    "keywords": "Keywords",
+    "version": "Version",
+    "latestTag": "Latest tag",
+    "noTag": "Not tagged yet",
+    "author": "Author",
+    "unknown": "Unknown",
+    "compatibility": "Compatibility",
+    "noCompatibility": "Not stated",
+    "install": "Install",
+    "installHint": "Add the marketplace first if you have not:",
+    "dependencies": "Dependencies",
+    "noDependencies": "No dependencies.",
+    "dependents": "Used by",
+    "noDependents": "No plugin in this marketplace depends on it.",
+    "contents": "Contents",
+    "noContents": "This plugin ships no agents or skills yet.",
+    "readme": "README",
+    "noReadme": "This plugin has no README yet.",
+    "changelog": "Changelog",
+    "noChangelog": "This plugin has no changelog yet."
+  },
+  "artifact": {
+    "inPlugin": "in {plugin}",
+    "plugin": "Plugin",
+    "model": "Model",
+    "modelDefault": "Inherits the session's model",
+    "tools": "Tools",
+    "toolsAll": "Inherits all tools",
+    "install": "Install",
+    "installHint": "Ships with the {plugin} plugin; installing the plugin installs it.",
+    "bodyAgent": "Agent instructions",
+    "bodySkill": "Skill instructions",
+    "noBody": "No instructions beyond the description."
+  },
+  "release": {
+    "none": "No releases yet. A release appears here once a plugin is tagged.",
+    "noChanges": "No changelog entry for this version.",
+    "undated": "Undated"
+  },
+  "whatsNew": {
+    "title": "What's new",
+    "lead": "Every tagged plugin release, newest first, with its changelog entry."
+  },
+  "guide": {
+    "title": "Getting started",
+    "lead": "Add the marketplace, install a plugin, keep it up to date, and roll back when you need to.",
+    "addTitle": "Add the marketplace",
+    "addText": "Run this inside Claude Code:",
+    "addCli": "Or from a shell:",
+    "installTitle": "Install a plugin",
+    "installText": "Install any plugin by name. Each plugin page shows its exact command.",
+    "installReload": "Then reload plugins, or start a new session:",
+    "updateTitle": "Update",
+    "updateText": "Refresh the marketplace, then update the plugin:",
+    "updateCheck": "Then run /reload-plugins or start a new session. To see the installed versions:",
+    "autoTitle": "Auto-update",
+    "autoText": "Auto-update is off by default for third-party marketplaces. Turn it on in either place:",
+    "autoMenu": "In Claude Code: /plugin → Marketplaces → \"Enable auto-update\".",
+    "autoSetting": "In your settings: set \"autoUpdate\": true on this marketplace's extraKnownMarketplaces entry.",
+    "versionsTitle": "Versions and tags",
+    "versionsText": "Each plugin is versioned on its own with semantic versioning. Claude Code detects an update by comparing the version in the plugin's manifest.",
+    "tagsText": "Every release is tagged <plugin>--v<version>, and dependency ranges resolve against those tags. A published tag never moves and is never deleted; a bad release is fixed forward.",
+    "rollbackTitle": "Roll back",
+    "rollbackText": "There is no rollback command. Rolling back means moving to the stable channel, {marketplace}-stable, which serves pinned release tags:",
+    "rollbackReturn": "Return to the latest channel the same way in reverse, once the fix is released.",
+    "rollbackData": "These plugins keep their working files (specs, plans, insights, retro ledger) in your repository, not in plugin data, so a rollback loses nothing.",
+    "fullDoc": "Read the full release policy (docs/RELEASES.md)"
+  },
+  "notFound": {
+    "title": "Not found",
+    "page": "There is no page at this address.",
+    "plugin": "There is no plugin named \"{name}\" in this marketplace.",
+    "artifact": "There is no agent or skill \"{name}\" in this marketplace."
+  }
+}
